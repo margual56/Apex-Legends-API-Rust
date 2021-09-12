@@ -5,7 +5,7 @@ version = "0.1.0"
 edition = "2018"
 author = "KasprDev <kasprdev@gmail.com>"
 repository = "https://github.com/KasprDev/Apex-Legends-API-Rust"
-keywords = ["apex legends", "apex", "game", "video game", "api"]
+keywords = ["apex_legends", "apex", "game", "video_game", "api"]
 categories = ["api-bindings", "asynchronous"]
 exclude = ["src/main.rs"]
 
