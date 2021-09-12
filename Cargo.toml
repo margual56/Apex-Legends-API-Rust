@@ -8,6 +8,7 @@ repository = "https://github.com/KasprDev/Apex-Legends-API-Rust"
 keywords = ["apex_legends", "apex", "game", "video_game", "api"]
 categories = ["api-bindings", "asynchronous"]
 exclude = ["src/main.rs"]
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 tokio = { version = "1.0", features = ["full"] }
