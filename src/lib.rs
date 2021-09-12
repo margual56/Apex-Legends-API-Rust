@@ -6,9 +6,7 @@ pub async fn get_user(username: String, api_key: &str) -> Result<data_types::Ape
         Ok(resp) => {
             match serde_json::from_str(&resp) {
                 Ok(data) => Ok(data),
-                Err(_) => { 
-                    return Err(resp)
-                }
+                Err(_) => Err("Unable to deserialize JSON.".to_string())
             }
         },
         Err(_) => Err("There was an error getting your profile.".to_string())
@@ -20,9 +18,7 @@ pub async fn get_recent_games(user_id: String, api_key: &str) -> Result<Vec<data
         Ok(resp) => {
             match serde_json::from_str(&resp) {
                 Ok(data) => Ok(data),
-                Err(_) => { 
-                    return Err(resp)
-                }
+                Err(_) => Err("Unable to deserialize JSON.".to_string())
             }
         },
         Err(_) => Err("There was an error getting your recent matches.".to_string())
@@ -34,9 +30,7 @@ pub async fn get_uid_from_username(username: String, api_key: &str) -> Result<da
         Ok(resp) => {
             match serde_json::from_str(&resp) {
                 Ok(data) => Ok(data),
-                Err(_) => { 
-                    return Err(resp)
-                }
+                Err(_) => Err("Unable to deserialize JSON.".to_string())
             }
         },
         Err(_) => Err("There was an error getting the user id.".to_string())
@@ -46,14 +40,10 @@ pub async fn get_uid_from_username(username: String, api_key: &str) -> Result<da
 pub async fn get_map_rotation(api_key: &str) -> Result<data_types::ApexMapRotation, String> {
     match http::get_request(format!("https://api.mozambiquehe.re/maprotation?version=2&auth={}", api_key)).await {
         Ok(resp) => {
-            let data: data_types::ApexMapRotation = match serde_json::from_str(&resp) {
-                Ok(deserialized) => deserialized,
-                Err(_) => { 
-                    return Err(resp)
-                }
-            };
-        
-            Ok(data)
+            match serde_json::from_str(&resp) {
+                Ok(data) => Ok(data),
+                Err(_) => Err("Unable to deserialize JSON.".to_string())
+            }
         },
         Err(_) => Err("There was an error getting the map rotation.".to_string())
     }
