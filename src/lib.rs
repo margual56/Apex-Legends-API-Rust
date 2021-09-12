@@ -6,7 +6,7 @@ pub async fn get_user(username: String, api_key: &str) -> Result<data_types::Ape
         Ok(resp) => {
             match serde_json::from_str(&resp) {
                 Ok(data) => Ok(data),
-                Err(_) => Err("Unable to deserialize JSON.".to_string())
+                Err(e) => Err(format!("{}", e))
             }
         },
         Err(_) => Err("There was an error getting your profile.".to_string())
@@ -18,7 +18,7 @@ pub async fn get_recent_games(user_id: String, api_key: &str) -> Result<Vec<data
         Ok(resp) => {
             match serde_json::from_str(&resp) {
                 Ok(data) => Ok(data),
-                Err(_) => Err("Unable to deserialize JSON.".to_string())
+                Err(e) => Err(format!("{}", e))
             }
         },
         Err(_) => Err("There was an error getting your recent matches.".to_string())
@@ -30,7 +30,7 @@ pub async fn get_uid_from_username(username: String, api_key: &str) -> Result<da
         Ok(resp) => {
             match serde_json::from_str(&resp) {
                 Ok(data) => Ok(data),
-                Err(_) => Err("Unable to deserialize JSON.".to_string())
+                Err(e) => Err(format!("{}", e))
             }
         },
         Err(_) => Err("There was an error getting the user id.".to_string())

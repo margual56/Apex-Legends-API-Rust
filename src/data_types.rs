@@ -131,7 +131,7 @@ pub struct ApexCosmetics {
 pub struct ApexGameData {
     pub key: String,
     pub value: i32,
-    pub name: String
+    pub name: Option<String>
 }
 
 #[derive(Deserialize, Debug)]
@@ -146,7 +146,7 @@ pub struct ApexProfile {
 pub struct ApexMapRotation {
     pub battle_royale: ApexMapRotationData,
     pub arenas: ApexMapRotationData,
-    //pub ranked: ApexMapRankedRotationData,
+    pub ranked: ApexRankedMapRotationData,
     #[serde(alias = "arenasRanked")]
     pub arenas_ranked: ApexMapRotationData
 }
@@ -155,6 +155,18 @@ pub struct ApexMapRotation {
 pub struct ApexMapRotationData {
     pub current: ApexMapRotationItem,
     pub next: ApexMapRotationItem,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct ApexRankedMapRotationData {
+    pub current: ApexRankedMapRotationItem,
+    pub next: ApexRankedMapRotationItem,
+}
+
+
+#[derive(Deserialize, Debug)]
+pub struct ApexRankedMapRotationItem {
+    pub map: String,
 }
 
 #[derive(Deserialize, Debug)]
