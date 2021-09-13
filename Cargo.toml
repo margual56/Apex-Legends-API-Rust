@@ -1,7 +1,7 @@
 [package]
 name = "apex_legends"
 description = "An API wrapper for the MozambiqueHe.re Apex Legends API."
-version = "0.1.1"
+version = "0.1.2"
 edition = "2018"
 author = "KasprDev <kasprdev@gmail.com>"
 repository = "https://github.com/KasprDev/Apex-Legends-API-Rust"
