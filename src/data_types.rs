@@ -61,9 +61,9 @@ pub struct ApexBattlepassHistory {
 
 #[derive(Deserialize)]
 pub struct ApexRank {
-    #[serde(alias = "rankName")]
-    pub rank_score: i32,
     #[serde(alias = "rankScore")]
+    pub rank_score: i32,
+    #[serde(alias = "rankName")]
     pub rank_name: String,
     #[serde(alias = "rankDiv")]
     pub rank_division: i32,
