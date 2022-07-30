@@ -11,7 +11,10 @@ mod tests {
 
         match apex_legends::get_user(user_name, &api_key).await {
             Ok(data) => {
-                println!("You are level {}, and you have {} kills.", data.global.level, data.stats.br_kills.value);
+                println!(
+                    "You are level {}, and you have {} kills.",
+                    data.global.level, data.stats.br_kills.value
+                );
 
                 assert!(true)
             }
