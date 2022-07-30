@@ -1,4 +1,4 @@
-use serde::{ Deserialize };
+use serde::Deserialize;
 
 #[derive(Deserialize)]
 pub struct ApexUser {
@@ -37,13 +37,13 @@ pub struct ApexRealtime {
     #[serde(alias = "selectedLegend")]
     pub selected_legend: String,
     #[serde(alias = "currentState")]
-    pub current_state: String
+    pub current_state: String,
 }
 
 #[derive(Deserialize)]
 pub struct ApexBattlepass {
     pub level: String,
-    pub history: ApexBattlepassHistory
+    pub history: ApexBattlepassHistory,
 }
 
 #[derive(Deserialize)]
@@ -57,7 +57,7 @@ pub struct ApexBattlepassHistory {
     pub season7: i32,
     pub season8: i32,
     pub season9: i32,
-    pub season10: i32
+    pub season10: i32,
 }
 
 #[derive(Deserialize)]
@@ -71,7 +71,7 @@ pub struct ApexRank {
     #[serde(alias = "rankImg")]
     pub rank_img: String,
     #[serde(alias = "rankedSeason")]
-    pub ranked_season: String
+    pub ranked_season: String,
 }
 
 #[derive(Deserialize)]
@@ -81,7 +81,7 @@ pub struct ApexBans {
     #[serde(alias = "remainingSeconds")]
     pub remaining_seconds: i32,
     #[serde(alias = "last_banReason")]
-    pub last_ban_reason: String
+    pub last_ban_reason: String,
 }
 
 #[derive(Deserialize, Debug)]
@@ -108,7 +108,7 @@ pub struct ApexGame {
     pub arenas_score_change: i32,
     #[serde(alias = "ArenasScore")]
     pub arenas_score: i32,
-    pub cosmetics: ApexCosmetics
+    pub cosmetics: ApexCosmetics,
 }
 
 #[derive(Deserialize, Debug)]
@@ -124,15 +124,14 @@ pub struct ApexCosmetics {
     #[serde(alias = "frameRarity")]
     pub frame_rarity: String,
     #[serde(alias = "introRarity")]
-    pub intro_rarity: String
-    
+    pub intro_rarity: String,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct ApexGameData {
     pub key: String,
     pub value: i32,
-    pub name: Option<String>
+    pub name: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -140,7 +139,7 @@ pub struct ApexProfile {
     pub name: String,
     pub uid: String,
     pub pid: String,
-    pub avatar: String
+    pub avatar: String,
 }
 
 #[derive(Deserialize, Debug)]
@@ -149,7 +148,7 @@ pub struct ApexMapRotation {
     pub arenas: ApexMapRotationData,
     pub ranked: ApexRankedMapRotationData,
     #[serde(alias = "arenasRanked")]
-    pub arenas_ranked: ApexMapRotationData
+    pub arenas_ranked: ApexMapRotationData,
 }
 
 #[derive(Deserialize, Debug)]
@@ -163,7 +162,6 @@ pub struct ApexRankedMapRotationData {
     pub current: ApexRankedMapRotationItem,
     pub next: ApexRankedMapRotationItem,
 }
-
 
 #[derive(Deserialize, Debug)]
 pub struct ApexRankedMapRotationItem {
@@ -182,7 +180,7 @@ pub struct ApexMapRotationItem {
     #[serde(alias = "DurationInSecs")]
     pub duration_in_seconds: i32,
     #[serde(alias = "DurationInMinutes")]
-    pub duration_in_minutes: i32
+    pub duration_in_minutes: i32,
 }
 
 #[derive(Deserialize, Debug)]
