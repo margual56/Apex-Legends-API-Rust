@@ -185,8 +185,8 @@ pub struct ApexMapRotationItem {
 
 #[derive(Deserialize, Debug)]
 pub struct Stat<V> {
-    name: String,
-    value: V,
+    pub name: String,
+    pub value: V,
 }
 
 #[derive(Deserialize, Debug)]
