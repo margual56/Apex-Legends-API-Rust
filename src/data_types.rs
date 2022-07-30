@@ -3,9 +3,10 @@ use serde::{ Deserialize };
 #[derive(Deserialize)]
 pub struct ApexUser {
     pub global: ApexGlobal,
-    pub realtime: ApexRealtime
+    pub realtime: ApexRealtime,
+    #[serde(alias = "total")]
+    pub stats: ApexStats,
 }
-
 #[derive(Deserialize)]
 pub struct ApexGlobal {
     pub name: String,
@@ -182,4 +183,21 @@ pub struct ApexMapRotationItem {
     pub duration_in_seconds: i32,
     #[serde(alias = "DurationInMinutes")]
     pub duration_in_minutes: i32
+}
+
+#[derive(Deserialize, Debug)]
+pub struct Stat<V> {
+    name: String,
+    value: V,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct ApexStats {
+    #[serde(alias = "kills")]
+    pub br_kills: Stat<i32>,
+    #[serde(alias = "damage")]
+    pub br_damage: Stat<i32>,
+    pub arenas_damage: Stat<i32>,
+    pub games_played: Stat<i32>,
+    pub kd: Stat<String>,
 }
