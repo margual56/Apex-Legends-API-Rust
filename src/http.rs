@@ -1,8 +1,13 @@
 use reqwest;
 
 pub async fn get_request(url: String) -> Result<String, reqwest::Error> {
-    match reqwest::get(url).await?.text().await {
-        Ok(data) => Ok(data),
+    let response = reqwest::get(url).await?;
+
+    match response.error_for_status() {
+        Ok(res) => match res.text().await {
+            Ok(text) => Ok(text),
+            Err(e) => Err(e),
+        },
         Err(e) => Err(e),
     }
 }

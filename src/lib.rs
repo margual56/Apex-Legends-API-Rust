@@ -1,5 +1,42 @@
+use std::time::Duration;
+
+use async_recursion::async_recursion;
+use reqwest::StatusCode;
+
 mod data_types;
 mod http;
+
+#[async_recursion]
+pub async fn get_user_retry(
+    username: String,
+    api_key: &str,
+    retry: bool,
+) -> Result<data_types::ApexUser, String> {
+    match http::get_request(format!(
+        "https://api.mozambiquehe.re/bridge?version=5&platform=PC&player={}&auth={}",
+        username, api_key
+    ))
+    .await
+    {
+        Ok(resp) => match serde_json::from_str(&resp) {
+            Ok(data) => Ok(data),
+            Err(e) => Err(format!("{}", e)),
+        },
+        Err(e) => {
+            if let Some(status) = e.status() {
+                if status == StatusCode::TOO_MANY_REQUESTS && retry {
+                    tokio::time::sleep(Duration::from_secs_f32(2.5)).await;
+
+                    return get_user_retry(username, api_key, false).await;
+                } else {
+                    Err(format!("{}", e))
+                }
+            }else {
+                Err(format!("There was an error getting your profile: {}", e))
+            }
+        }
+    }
+}
 
 pub async fn get_user(username: String, api_key: &str) -> Result<data_types::ApexUser, String> {
     match http::get_request(format!(
@@ -12,7 +49,7 @@ pub async fn get_user(username: String, api_key: &str) -> Result<data_types::Ape
             Ok(data) => Ok(data),
             Err(e) => Err(format!("{}", e)),
         },
-        Err(_) => Err("There was an error getting your profile.".to_string()),
+        Err(e) => Err(format!("There was an error getting your profile: {}", e)),
     }
 }
 
