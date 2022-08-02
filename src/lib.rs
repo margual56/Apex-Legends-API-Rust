@@ -31,7 +31,7 @@ pub async fn get_user_retry(
                 } else {
                     Err(format!("{}", e))
                 }
-            }else {
+            } else {
                 Err(format!("There was an error getting your profile: {}", e))
             }
         }
