@@ -14,6 +14,8 @@ pub struct ApexGlobal {
     pub avatar: String,
     pub platform: String,
     pub level: i32,
+    #[serde(alias = "levelPrestige")]
+    pub level_prestige: i32,
     #[serde(alias = "toNextLevelPercent")]
     pub to_next_level_percent: i32,
     pub rank: ApexRank,
