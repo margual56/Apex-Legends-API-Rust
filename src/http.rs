@@ -1,14 +1,21 @@
-use reqwest;
+use reqwest::{self, header::HeaderMap};
 
-pub async fn get_request(url: String) -> Result<String, reqwest::Error> {
-    let response = reqwest::get(url).await?;
+pub async fn get_request(url: String) -> Result<String, (reqwest::Error, Option<HeaderMap>)> {
+    let response = reqwest::get(url).await;
 
-    match response.error_for_status() {
-        Ok(res) => match res.text().await {
-            Ok(text) => Ok(text),
-            Err(e) => Err(e),
-        },
-        Err(e) => Err(e),
+    match response {
+        Ok(res) => {
+            let headers = res.headers().clone();
+
+            match res.error_for_status() {
+                Ok(r) => Ok(r
+                    .text()
+                    .await
+                    .expect("Could not retrieve text from the successful request")),
+                Err(e) => Err((e, Some(headers))), //Err((, Some(headers))),
+            }
+        }
+        Err(e) => Err((e, None)),
     }
 }
 
