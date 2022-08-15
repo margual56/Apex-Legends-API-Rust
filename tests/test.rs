@@ -25,25 +25,31 @@ mod tests {
         let user_name = env::var("USERNAME").expect("Expected key USERNAME");
         let api_key = env::var("API_KEY").expect("Expected key API_KEY");
 
-        assert!(print_data::<data_types::ApexUser>(
-            apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await,
-            |data| {
-                format!(
-                    "You are level {}, and you have {} kills.",
-                    data.global.level, data.stats.br_kills.value
-                )
-            },
-        ), "get_user_retry");
+        assert!(
+            print_data::<data_types::ApexUser>(
+                apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await,
+                |data| {
+                    format!(
+                        "You are level {}, and you have {} kills.",
+                        data.global.level, data.stats.br_kills.value
+                    )
+                },
+            ),
+            "get_user_retry"
+        );
 
-        assert!(print_data::<data_types::ApexUser>(
-            apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await,
-            |data| {
-                format!(
-                    "You are level {}, and you have {} kills.",
-                    data.global.level, data.stats.br_kills.value
-                )
-            },
-        ), "get_user_retry");
+        assert!(
+            print_data::<data_types::ApexUser>(
+                apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await,
+                |data| {
+                    format!(
+                        "You are level {}, and you have {} kills.",
+                        data.global.level, data.stats.br_kills.value
+                    )
+                },
+            ),
+            "get_user_retry"
+        );
     }
     #[tokio::test]
     async fn uid() {
@@ -52,17 +58,23 @@ mod tests {
         let user_name = env::var("USERNAME").expect("Expected key USERNAME");
         let api_key = env::var("API_KEY").expect("Expected key API_KEY");
 
-        assert!(print_data::<data_types::ApexProfile>(
-            apex_legends::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
-                .await,
-            |data| format!("Your UID is {}", data.uid),
-        ), "get_uid_from_username_retry");
+        assert!(
+            print_data::<data_types::ApexProfile>(
+                apex_legends::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
+                    .await,
+                |data| format!("Your UID is {}", data.uid),
+            ),
+            "get_uid_from_username_retry"
+        );
 
-        assert!(print_data::<data_types::ApexProfile>(
-            apex_legends::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
-                .await,
-            |data| format!("Your UID is {}", data.uid),
-        ), "get_uid_from_username_retry");
+        assert!(
+            print_data::<data_types::ApexProfile>(
+                apex_legends::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
+                    .await,
+                |data| format!("Your UID is {}", data.uid),
+            ),
+            "get_uid_from_username_retry"
+        );
     }
 
     #[tokio::test]
@@ -71,23 +83,29 @@ mod tests {
 
         let api_key = env::var("API_KEY").expect("Expected key API_KEY");
 
-        assert!(print_data::<data_types::ApexMapRotation>(
-            apex_legends::get_map_rotation_retry(&api_key, true).await,
-            |data| {
-                format!(
-                    "The current ranked map is {}",
-                    data.arenas_ranked.current.map
-                )
-            },
-        ), "get_map_rotation_retry");
-        assert!(print_data::<data_types::ApexMapRotation>(
-            apex_legends::get_map_rotation_retry(&api_key, true).await,
-            |data| {
-                format!(
-                    "The current ranked map is {}",
-                    data.arenas_ranked.current.map
-                )
-            },
-        ), "get_map_rotation_retry");
+        assert!(
+            print_data::<data_types::ApexMapRotation>(
+                apex_legends::get_map_rotation_retry(&api_key, true).await,
+                |data| {
+                    format!(
+                        "The current ranked map is {}",
+                        data.arenas_ranked.current.map
+                    )
+                },
+            ),
+            "get_map_rotation_retry"
+        );
+        assert!(
+            print_data::<data_types::ApexMapRotation>(
+                apex_legends::get_map_rotation_retry(&api_key, true).await,
+                |data| {
+                    format!(
+                        "The current ranked map is {}",
+                        data.arenas_ranked.current.map
+                    )
+                },
+            ),
+            "get_map_rotation_retry"
+        );
     }
 }
