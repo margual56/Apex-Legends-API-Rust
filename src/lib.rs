@@ -56,14 +56,14 @@ fn get_rate(header: Option<HeaderMap>) -> f32 {
 /// # Examples
 /// ```
 /// use std::env;
-/// 
+///
 /// #[tokio::test]
 /// async fn user() {
 ///     dotenv::dotenv().expect("Could not load .env file");
-/// 
+///
 ///     let user_name = env::var("USERNAME").expect("Expected key USERNAME");
 ///     let api_key = env::var("API_KEY").expect("Expected key API_KEY");
-/// 
+///
 ///     // This example automatically handles the 429 error code (too many requests)
 ///     match apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await {
 ///        Ok(data) => {
@@ -122,11 +122,11 @@ pub async fn get_user_retry(
 /// # Examples
 /// ```
 /// use std::env;
-/// 
+///
 /// #[tokio::test]
 /// async fn user() {
 ///     dotenv::dotenv().expect("Could not load .env file");
-/// 
+///
 ///     let user_name = env::var("USERNAME").expect("Expected key USERNAME");
 ///     let api_key = env::var("API_KEY").expect("Expected key API_KEY");
 ///
