@@ -55,6 +55,9 @@ fn get_rate(header: Option<HeaderMap>) -> f32 {
 ///
 /// # Examples
 /// ```
+/// let user_name = env::var("USERNAME").expect("Expected key USERNAME");
+/// let api_key = env::var("API_KEY").expect("Expected key API_KEY");
+/// 
 /// // This example automatically handles the 429 error code (too many requests)
 /// match apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await {
 ///    Ok(data) => {
@@ -111,6 +114,9 @@ pub async fn get_user_retry(
 ///
 /// # Examples
 /// ```
+/// let user_name = env::var("USERNAME").expect("Expected key USERNAME");
+/// let api_key = env::var("API_KEY").expect("Expected key API_KEY");
+/// 
 /// // This example will fail if the API returns the 429 error code (too many requests)
 /// match apex_legends::get_user(String::from(&user_name), &api_key).await {
 ///    Ok(data) => {
