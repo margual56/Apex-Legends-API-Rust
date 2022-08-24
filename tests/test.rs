@@ -60,8 +60,12 @@ mod tests {
 
         assert!(
             print_data::<data_types::ApexProfile>(
-                apex_legends_api::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
-                    .await,
+                apex_legends_api::get_uid_from_username_retry(
+                    String::from(&user_name),
+                    &api_key,
+                    true
+                )
+                .await,
                 |data| format!("Your UID is {}", data.uid),
             ),
             "get_uid_from_username_retry"
@@ -69,8 +73,12 @@ mod tests {
 
         assert!(
             print_data::<data_types::ApexProfile>(
-                apex_legends_api::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
-                    .await,
+                apex_legends_api::get_uid_from_username_retry(
+                    String::from(&user_name),
+                    &api_key,
+                    true
+                )
+                .await,
                 |data| format!("Your UID is {}", data.uid),
             ),
             "get_uid_from_username_retry"
