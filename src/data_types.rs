@@ -191,14 +191,29 @@ pub struct Stat<V> {
     pub value: V,
 }
 
+impl Default for Stat<i32> {
+    fn default() -> Self {
+        Self { name: "Missing attribute".to_string(), value: 0 }
+    }
+}
+
+impl Default for Stat<String> {
+    fn default() -> Self {
+        Self { name: "Missing attribute".to_string(), value: "None".to_string() }
+    }
+}
+
 #[derive(Deserialize, Debug)]
 pub struct ApexStats {
-    #[serde(alias = "kills")]
+    #[serde(alias = "kills", default)]
     pub br_kills: Stat<i32>,
-    #[serde(alias = "damage")]
+    #[serde(alias = "damage", default)]
     pub br_damage: Stat<i32>,
+    #[serde(default)]
     pub arenas_damage: Stat<i32>,
+    #[serde(default)]
     pub games_played: Stat<i32>,
+    #[serde(default)]
     pub kd: Stat<String>,
 }
 

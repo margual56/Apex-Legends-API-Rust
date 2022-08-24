@@ -18,7 +18,9 @@ fn handle_error<T>(status: StatusCode) -> Result<T, String> {
         StatusCode::UNAUTHORIZED => Err(String::from(
             "The API key is incorrect, please contact the bot administrator",
         )),
-        StatusCode::NOT_FOUND => Err(String::from("Either the apexlegendsapi.com")),
+        StatusCode::NOT_FOUND => Err(String::from(
+            "Either apexlegendsapi.com is not available or the user does not exist",
+        )),
         StatusCode::INTERNAL_SERVER_ERROR => {
             Err(String::from("There was an internal server error"))
         }
