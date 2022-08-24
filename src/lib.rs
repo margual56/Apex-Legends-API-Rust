@@ -55,17 +55,27 @@ fn get_rate(header: Option<HeaderMap>) -> f32 {
 ///
 /// # Examples
 /// ```
-/// // This example automatically handles the 429 error code (too many requests)
-/// match apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await {
-///    Ok(data) => {
-///        println!(
-///            "You are level {}, and you have {} kills.",
-///            data.global.level, data.stats.br_kills.value
-///        );
-///    }
-///    Err(e) => {
-///        println!("there was an error!: {}", e);
-///    }
+/// use std::env;
+///
+/// #[tokio::test]
+/// async fn user() {
+///     dotenv::dotenv().expect("Could not load .env file");
+///
+///     let user_name = env::var("USERNAME").expect("Expected key USERNAME");
+///     let api_key = env::var("API_KEY").expect("Expected key API_KEY");
+///
+///     // This example automatically handles the 429 error code (too many requests)
+///     match apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await {
+///        Ok(data) => {
+///            println!(
+///                "You are level {}, and you have {} kills.",
+///                data.global.level, data.stats.br_kills.value
+///            );
+///        }
+///        Err(e) => {
+///            println!("there was an error!: {}", e);
+///        }
+///     }
 /// }
 /// ```
 pub async fn get_user_retry(
@@ -111,17 +121,27 @@ pub async fn get_user_retry(
 ///
 /// # Examples
 /// ```
-/// // This example will fail if the API returns the 429 error code (too many requests)
-/// match apex_legends::get_user(String::from(&user_name), &api_key).await {
-///    Ok(data) => {
-///        println!(
-///            "You are level {}, and you have {} kills.",
-///            data.global.level, data.stats.br_kills.value
-///        );
-///    }
-///    Err(e) => {
-///        println!("there was an error!: {}", e);
-///    }
+/// use std::env;
+///
+/// #[tokio::test]
+/// async fn user() {
+///     dotenv::dotenv().expect("Could not load .env file");
+///
+///     let user_name = env::var("USERNAME").expect("Expected key USERNAME");
+///     let api_key = env::var("API_KEY").expect("Expected key API_KEY");
+///
+///     // This example will fail if the API returns the 429 error code (too many requests)
+///     match apex_legends::get_user(String::from(&user_name), &api_key).await {
+///        Ok(data) => {
+///            println!(
+///                "You are level {}, and you have {} kills.",
+///                data.global.level, data.stats.br_kills.value
+///            );
+///        }
+///        Err(e) => {
+///            println!("there was an error!: {}", e);
+///        }
+///     }
 /// }
 /// ```
 pub async fn get_user(username: String, api_key: &str) -> Result<data_types::ApexUser, String> {
