@@ -45,12 +45,12 @@ fn get_rate(header: Option<HeaderMap>) -> f32 {
 
 /// Gets information about a User. This version automatically retries if the API returns code 429 (too many requests).
 /// For the sleep time it reads the `x-current-rate` header or uses the DEFAULT_RATE
-/// See https://apexlegendsapi.com/#player-statistics
+/// See [https://apexlegendsapi.com/#player-statistics](https://apexlegendsapi.com/#player-statistics)
 ///
 /// # Arguments
 ///
 /// * `username` - The Origin username of the player
-/// * `api_key` - The API key for https://apexlegendsstatus.com
+/// * `api_key` - The API key for [https://apexlegendsstatus.com](https://apexlegendsstatus.com)
 /// * `retry` - Wether to retry after a timeout or error out immediately
 ///
 /// # Examples
@@ -112,12 +112,12 @@ pub async fn get_user_retry(
 }
 
 /// Gets information about a User. This version does not handle code 429 (too many requests)
-/// See https://apexlegendsapi.com/#player-statistics
+/// See [https://apexlegendsapi.com/#player-statistics](https://apexlegendsapi.com/#player-statistics)
 ///
 /// # Arguments
 ///
 /// * `username` - The Origin username of the player
-/// * `api_key` - The API key for https://apexlegendsstatus.com
+/// * `api_key` - The API key for [https://apexlegendsstatus.com](https://apexlegendsstatus.com)
 ///
 /// # Examples
 /// ```
@@ -167,10 +167,10 @@ pub async fn get_user(username: String, api_key: &str) -> Result<data_types::Ape
 
 /// Gets information about the recent games.
 /// You must be whitelisted to use this API. It has a strict limit of 5 uniques players queried per hour.
-/// See https://apexlegendsapi.com/#match-history
+/// See [https://apexlegendsapi.com/#match-history](https://apexlegendsapi.com/#match-history)
 ///
 /// * `user_id` - The player's UID
-/// * `api_key` - The API key for https://apexlegendsstatus.com
+/// * `api_key` - The API key for [https://apexlegendsstatus.com](https://apexlegendsstatus.com)
 pub async fn get_recent_games(
     user_id: String,
     api_key: &str,
@@ -196,7 +196,7 @@ pub async fn get_recent_games(
 }
 
 /// Returns a player's UID from a given name, but also works with Playstation and Xbox players
-/// See https://apexlegendsapi.com/#name-to-uid
+/// See [https://apexlegendsapi.com/#name-to-uid](https://apexlegendsapi.com/#name-to-uid)
 ///
 /// ## Warning
 /// This function does not work as intended:
@@ -205,7 +205,7 @@ pub async fn get_recent_games(
 ///
 /// # Parameters
 /// * `user_id` - The player's UID
-/// * `api_key` - The API key for https://apexlegendsstatus.com
+/// * `api_key` - The API key for [https://apexlegendsstatus.com](https://apexlegendsstatus.com)
 /// * `retry` - Wether to retry after a timeout or error out immediately
 pub async fn get_uid_from_username_retry(
     username: String,
@@ -241,6 +241,12 @@ pub async fn get_uid_from_username_retry(
     }
 }
 
+/// Returns a player's UID from a given name, but also works with Playstation and Xbox players
+/// See [https://apexlegendsapi.com/#name-to-uid](https://apexlegendsapi.com/#name-to-uid)
+///
+/// # Parameters
+/// * `user_id` - The player's UID
+/// * `api_key` - The API key for [https://apexlegendsstatus.com](https://apexlegendsstatus.com)
 pub async fn get_uid_from_username(
     username: String,
     api_key: &str,
@@ -268,6 +274,13 @@ pub async fn get_uid_from_username(
     }
 }
 
+/// The map rotation API will return the current and next map for Battle Royale and Arenas, for both pubs and ranked modes.
+/// Control map rotation is also available.
+/// See [https://apexlegendsapi.com/#map-rotation](https://apexlegendsapi.com/#map-rotation)
+///
+/// # Parameters
+/// * `api_key` - The API key for [https://apexlegendsstatus.com](https://apexlegendsstatus.com)
+/// * `retry` - Wether to retry after a timeout or error out immediately
 pub async fn get_map_rotation_retry(
     api_key: &str,
     retry: bool,
@@ -298,6 +311,12 @@ pub async fn get_map_rotation_retry(
     }
 }
 
+/// The map rotation API will return the current and next map for Battle Royale and Arenas, for both pubs and ranked modes.
+/// Control map rotation is also available.
+/// See [https://apexlegendsapi.com/#map-rotation](https://apexlegendsapi.com/#map-rotation)
+///
+/// # Parameters
+/// * `api_key` - The API key for [https://apexlegendsstatus.com](https://apexlegendsstatus.com)
 pub async fn get_map_rotation(api_key: &str) -> Result<data_types::ApexMapRotation, String> {
     match http::get_request(format!(
         "https://api.mozambiquehe.re/maprotation?version=2&auth={}",
