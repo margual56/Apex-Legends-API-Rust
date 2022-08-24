@@ -199,3 +199,9 @@ pub struct ApexStats {
     pub games_played: Stat<i32>,
     pub kd: Stat<String>,
 }
+
+#[derive(Deserialize, Debug)]
+pub struct ApexError {
+    #[serde(alias = "Error")]
+    pub message: String,
+}
