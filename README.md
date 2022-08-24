@@ -1,3 +1,5 @@
+[![Rust](https://github.com/margual56/Apex-Legends-API-Rust/actions/workflows/rust.yml/badge.svg?branch=master)](https://github.com/margual56/Apex-Legends-API-Rust/actions/workflows/rust.yml)
+
 # Apex Legends API (in Rust)
 
 This package utilizes the Apex Legends Status (https://apexlegendsstatus.com) API.
