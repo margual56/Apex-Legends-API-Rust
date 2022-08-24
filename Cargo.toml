@@ -1,14 +1,16 @@
 [package]
-name = "apex_legends"
+name = "apex_legends_api"
 description = "An API wrapper for the MozambiqueHe.re Apex Legends API."
-version = "0.1.2"
+version = "0.1.4"
 edition = "2018"
-author = "KasprDev <kasprdev@gmail.com>"
-repository = "https://github.com/KasprDev/Apex-Legends-API-Rust"
+authors = ["KasprDev <kasprdev@gmail.com>", "margual56 <marcos56@mailbox.org>"]
+repository = "https://github.com/margual56/Apex-Legends-API-Rust"
 keywords = ["apex_legends", "apex", "game", "video_game", "api"]
 categories = ["api-bindings", "asynchronous"]
-exclude = ["src/main.rs"]
-license = "MIT OR Apache-2.0"
+exclude = ["src/main.rs", ".github/"]
+license = "MIT"
+readme = "README.md"
+
 
 [dependencies]
 tokio = { version = "1.0", features = ["full"] }

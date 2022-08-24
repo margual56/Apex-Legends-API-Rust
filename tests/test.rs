@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use apex_legends::data_types;
+    use apex_legends_api::data_types;
     use std::env;
 
     fn print_data<T>(res: Result<T, String>, f: fn(T) -> String) -> bool {
@@ -27,7 +27,7 @@ mod tests {
 
         assert!(
             print_data::<data_types::ApexUser>(
-                apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await,
+                apex_legends_api::get_user_retry(String::from(&user_name), &api_key, true).await,
                 |data| {
                     format!(
                         "You are level {}, and you have {} kills.",
@@ -40,7 +40,7 @@ mod tests {
 
         assert!(
             print_data::<data_types::ApexUser>(
-                apex_legends::get_user_retry(String::from(&user_name), &api_key, true).await,
+                apex_legends_api::get_user_retry(String::from(&user_name), &api_key, true).await,
                 |data| {
                     format!(
                         "You are level {}, and you have {} kills.",
@@ -60,8 +60,12 @@ mod tests {
 
         assert!(
             print_data::<data_types::ApexProfile>(
-                apex_legends::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
-                    .await,
+                apex_legends_api::get_uid_from_username_retry(
+                    String::from(&user_name),
+                    &api_key,
+                    true
+                )
+                .await,
                 |data| format!("Your UID is {}", data.uid),
             ),
             "get_uid_from_username_retry"
@@ -69,8 +73,12 @@ mod tests {
 
         assert!(
             print_data::<data_types::ApexProfile>(
-                apex_legends::get_uid_from_username_retry(String::from(&user_name), &api_key, true)
-                    .await,
+                apex_legends_api::get_uid_from_username_retry(
+                    String::from(&user_name),
+                    &api_key,
+                    true
+                )
+                .await,
                 |data| format!("Your UID is {}", data.uid),
             ),
             "get_uid_from_username_retry"
@@ -85,7 +93,7 @@ mod tests {
 
         assert!(
             print_data::<data_types::ApexMapRotation>(
-                apex_legends::get_map_rotation_retry(&api_key, true).await,
+                apex_legends_api::get_map_rotation_retry(&api_key, true).await,
                 |data| {
                     format!(
                         "The current ranked map is {}",
@@ -97,7 +105,7 @@ mod tests {
         );
         assert!(
             print_data::<data_types::ApexMapRotation>(
-                apex_legends::get_map_rotation_retry(&api_key, true).await,
+                apex_legends_api::get_map_rotation_retry(&api_key, true).await,
                 |data| {
                     format!(
                         "The current ranked map is {}",

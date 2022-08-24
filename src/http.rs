@@ -19,6 +19,7 @@ pub async fn get_request(url: String) -> Result<String, (reqwest::Error, Option<
     }
 }
 
+#[allow(dead_code)]
 pub async fn post_request(url: &str, body: String) -> Result<String, reqwest::Error> {
     let client = reqwest::Client::new();
 
